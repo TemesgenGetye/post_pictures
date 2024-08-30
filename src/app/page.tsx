@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { db } from "~/server/db";
 
 const imageURl = [
   "https://utfs.io/f/ca691885-9636-40a2-a083-27fbd1764917-1v7wuv.png",
@@ -23,10 +24,22 @@ const images = imageURl.map((url, index) => ({
   url,
 }));
 
-export default function HomePage() {
+export default async function HomePage() {
+  const post = await db.query.posts.findMany();
+  console.log(post);
+
   return (
     <main className="flex min-h-screen items-center p-4">
       <div className="flex flex-wrap justify-center gap-4 py-1">
+        {post.map((post) => (
+          <div
+            key={post.id}
+            className="flex w-72 items-center justify-center gap-4 rounded-lg border border-[#ffd900d4] shadow-2xl"
+          >
+            <div>{post.name}</div>
+          </div>
+        ))}
+
         {images.map((image) => (
           <div
             key={image.id}
