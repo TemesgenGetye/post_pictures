@@ -25,8 +25,8 @@ const images = imageURl.map((url, index) => ({
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen p-4">
-      <div className="flex flex-wrap gap-4 p-4 py-1">
+    <main className="flex min-h-screen items-center p-4">
+      <div className="flex flex-wrap justify-center gap-4 py-1">
         {images.map((image) => (
           <div
             key={image.id}
