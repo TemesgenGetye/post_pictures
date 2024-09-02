@@ -2,6 +2,8 @@ import "~/styles/globals.css";
 
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
+import { ClerkProvider } from "@clerk/nextjs";
+import Nav from "~/components/Nav";
 
 export const metadata: Metadata = {
   title: "NEW T3",
@@ -9,26 +11,17 @@ export const metadata: Metadata = {
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
-function TopNav() {
-  return (
-    <div className="flex h-16 items-center justify-between p-4">
-      <div className="text-2xl font-bold">Gallary</div>
-      <div className="font rounded-2xl px-5 py-2 text-xl font-bold ring-1 ring-white">
-        SignIn
-      </div>
-    </div>
-  );
-}
-
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${GeistSans.variable}`}>
-      <body className="flex min-h-screen flex-col bg-black text-white">
-        <TopNav />
-        {children}
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en" className={`${GeistSans.variable}`}>
+        <body className="flex min-h-screen flex-col bg-black text-white">
+          <Nav />
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
