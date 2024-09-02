@@ -1,18 +1,11 @@
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 import Image from "next/image";
-import { db } from "~/server/db";
+import { getImages } from "~/server/queries";
 
 export const daynamic = "force-dynamic";
 
 export default async function HomePage() {
-  const imageURL = await db.query.images.findMany({
-    columns: {
-      id: true,
-      name: true,
-      url: true,
-    },
-    orderBy: (posts, { desc }) => [desc(posts.id)],
-  });
+  const imageURL = await getImages();
 
   return (
     <main className="flex min-h-screen items-center justify-center p-4">
@@ -21,7 +14,7 @@ export default async function HomePage() {
       </SignedOut>
       <SignedIn>
         <div className="flex flex-wrap justify-start gap-4 py-1">
-          {[...imageURL]?.map((image) => (
+          {imageURL?.map((image) => (
             <>
               <div
                 key={`${image?.id}`}
@@ -37,7 +30,7 @@ export default async function HomePage() {
                   priority={true}
                 />
 
-                <div className="text-start text-lg font-semibold">
+                <div className="max-w-[280px] text-start text-lg font-semibold">
                   {image?.name}
                 </div>
               </div>
