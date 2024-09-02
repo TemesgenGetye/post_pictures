@@ -5,7 +5,7 @@ import { db } from "~/server/db";
 export const daynamic = "force-dynamic";
 
 export default async function HomePage() {
-  const imageURL = await db.query.posts.findMany({
+  const imageURL = await db.query.images.findMany({
     columns: {
       id: true,
       name: true,
@@ -20,11 +20,11 @@ export default async function HomePage() {
         <div className="text-center text-2xl font-semibold">Please signin</div>
       </SignedOut>
       <SignedIn>
-        <div className="flex flex-wrap gap-4 py-1">
-          {[...imageURL, ...imageURL, ...imageURL]?.map((image, index) => (
+        <div className="flex flex-wrap justify-start gap-4 py-1">
+          {[...imageURL]?.map((image) => (
             <>
               <div
-                key={`${image?.id} - ${index}`}
+                key={`${image?.id}`}
                 className="m-auto flex flex-col items-center justify-center gap-1"
               >
                 <Image

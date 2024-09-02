@@ -4,6 +4,7 @@ import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
 import TopNav from "../components/TopNav";
+import "@uploadthing/react/styles.css";
 
 export const metadata: Metadata = {
   title: "NEW T3",
