@@ -13,7 +13,6 @@ export default async function HomePage() {
     },
     orderBy: (posts, { desc }) => [desc(posts.id)],
   });
-  console.log(imageURL);
 
   return (
     <main className="flex min-h-screen items-center justify-center p-4">
@@ -22,10 +21,10 @@ export default async function HomePage() {
       </SignedOut>
       <SignedIn>
         <div className="flex flex-wrap gap-4 py-1">
-          {[...imageURL, ...imageURL, ...imageURL]?.map((image) => (
+          {[...imageURL, ...imageURL, ...imageURL]?.map((image, index) => (
             <>
               <div
-                key={image?.id}
+                key={`${image?.id} - ${index}`}
                 className="m-auto flex flex-col items-center justify-center gap-1"
               >
                 <Image

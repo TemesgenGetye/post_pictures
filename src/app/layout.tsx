@@ -3,7 +3,7 @@ import "~/styles/globals.css";
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
-import Nav from "~/components/Nav";
+import TopNav from "~/components/TopNav";
 
 export const metadata: Metadata = {
   title: "NEW T3",
@@ -18,7 +18,7 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en" className={`${GeistSans.variable}`}>
         <body className="flex min-h-screen flex-col bg-black text-white">
-          <Nav />
+          <TopNav />
           {children}
         </body>
       </html>
