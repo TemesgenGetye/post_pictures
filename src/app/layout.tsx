@@ -3,7 +3,7 @@ import "~/styles/globals.css";
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
-import Nav from "~/components/Nav";
+import Nav from "../components/Nav";
 
 export const metadata: Metadata = {
   title: "NEW T3",
