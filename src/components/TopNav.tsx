@@ -14,7 +14,7 @@ export default function Nav() {
   const router = useRouter();
   return (
     <div className="flex h-16 items-center justify-between p-4">
-      <div className="text-2xl font-bold">Gallary Images</div>
+      <div className="text-2xl font-bold">Gallary</div>
 
       <SignedOut>
         <div className="font rounded-2xl px-5 py-2 text-xl font-bold ring-1 ring-white">
