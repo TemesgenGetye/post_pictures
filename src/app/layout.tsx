@@ -5,6 +5,7 @@ import { type Metadata } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
 import TopNav from "../components/TopNav";
 import "@uploadthing/react/styles.css";
+import React from "react";
 
 export const metadata: Metadata = {
   title: "NEW T3",
@@ -14,13 +15,16 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+  modal,
+}: Readonly<{ children: React.ReactNode; modal: React.ReactNode }>) {
   return (
     <ClerkProvider>
       <html lang="en" className={`${GeistSans.variable}`}>
         <body className="flex min-h-screen flex-col bg-black text-white">
           <TopNav />
           {children}
+          {modal}
+          <div id="modal-root" />
         </body>
       </html>
     </ClerkProvider>
