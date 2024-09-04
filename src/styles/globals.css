@@ -5,4 +5,16 @@
 dialog {
   max-width: 100vh;
   min-height: 100vh;
+  color: white;
+}
+
+/* tailwind.css */
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
 }

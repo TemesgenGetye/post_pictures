@@ -20,9 +20,11 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en" className={`${GeistSans.variable}`}>
-        <body className="flex min-h-screen flex-col bg-black text-white">
-          <TopNav />
-          {children}
+        <body className="bg-black text-white">
+          <div className="grid-row-[auto,1fr] grid h-screen">
+            <TopNav />
+            <main className="no-scrollbar overflow-y-scroll">{children}</main>
+          </div>
           {modal}
           <div id="modal-root" />
         </body>

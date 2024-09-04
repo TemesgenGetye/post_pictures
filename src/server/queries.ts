@@ -14,11 +14,7 @@ export async function getImages() {
 
     const imageURL = await db.query.images.findMany({
       where: (images, { eq }) => eq(images.userId, user.userId),
-      columns: {
-        id: true,
-        name: true,
-        url: true,
-      },
+
       orderBy: (images, { desc }) => [desc(images.id)],
     });
 
@@ -37,11 +33,6 @@ export async function getImageById(id: number) {
     }
     const image = await db.query.images.findFirst({
       where: (images, { eq }) => eq(images.id, id),
-      columns: {
-        id: true,
-        name: true,
-        url: true,
-      },
     });
     return image;
   } catch (error) {
