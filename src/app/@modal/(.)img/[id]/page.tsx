@@ -1,22 +1,15 @@
-import { getImageById } from "~/server/queries";
 import { Modal } from "./modal";
+import ImageForFullModel from "~/components/ImageForFullModel";
 
 export default async function PhotoModal({
-  params: { id: photoId },
+  params: { id },
 }: {
-  params: { id: string };
+  params: { id: number };
 }) {
-  const Id = Number(photoId);
-  if (!photoId) {
-    return {
-      notFound: true,
-    };
-  }
-  const image = await getImageById(Id);
-
+  console.log("id :", id);
   return (
-    <div>
-      <img src={image?.url} alt={image?.name} />
-    </div>
+    <Modal>
+      <ImageForFullModel id={id} />
+    </Modal>
   );
 }

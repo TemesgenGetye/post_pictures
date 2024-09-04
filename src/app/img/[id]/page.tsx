@@ -1,9 +1,10 @@
-import { Modal } from "./modal";
+import ImageForFullModel from "~/components/ImageForFullModel";
 
-export default function PhotoModal({
-  params: { id: photoId },
+export default async function PhotoModal({
+  params: { id },
 }: {
-  params: { id: string };
+  params: { id: number };
 }) {
-  return <div>{photoId}</div>;
+  console.log("id :", id);
+  return <ImageForFullModel id={id} />;
 }
