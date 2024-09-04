@@ -1,5 +1,5 @@
 import { auth, clerkClient } from "@clerk/nextjs/server";
-import { getImageById } from "~/server/queries";
+import { getImageById } from "@/server/queries";
 
 export default async function ImageForFullModel(props: { id: number }) {
   const image = await getImageById(props.id);

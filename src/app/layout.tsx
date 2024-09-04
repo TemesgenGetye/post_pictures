@@ -1,4 +1,4 @@
-import "~/styles/globals.css";
+import "@/styles/globals.css";
 
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
@@ -6,6 +6,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import TopNav from "../components/TopNav";
 import "@uploadthing/react/styles.css";
 import React from "react";
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: "NEW T3",
@@ -20,10 +21,14 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en" className={`${GeistSans.variable}`}>
-        <body className="bg-black text-white">
+        <body className="dark:bg-background dark:text-foreground l bg-black text-white">
           <div className="grid-row-[auto,1fr] grid h-screen">
             <TopNav />
-            <main className="no-scrollbar overflow-y-scroll">{children}</main>
+            <main className="no-scrollbar overflow-y-scroll">
+              {children}
+
+              <Toaster />
+            </main>
           </div>
           {modal}
           <div id="modal-root" />

@@ -2,8 +2,22 @@
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import { UploadButton } from "@uploadthing/react";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+import Spinner from "./Spinner";
+import { useEffect } from "react";
 
 export default function Nav() {
+  useEffect(() => {
+    toast(
+      <div className="flex items-center gap-2">
+        <Spinner /> Uploading...
+      </div>,
+      {
+        duration: 10000,
+      },
+    );
+  }, []);
+
   const router = useRouter();
   return (
     <div className="flex h-16 items-center justify-between border-b border-gray-300 p-5 py-12 pt-8">
@@ -19,8 +33,27 @@ export default function Nav() {
           <UploadButton
             className="mt-6"
             endpoint="imageUploader"
+            appearance={{
+              button:
+                "color-white bg-black text-white text-lg border border-white p-3 rounded-2xl",
+            }}
+            onUploadBegin={() => {
+              toast(
+                <>
+                  <Spinner />
+                  <span className="ml-2 text-lg">Uploading...</span>
+                </>,
+                {
+                  duration: 10000,
+                  id: "upload-begin",
+                },
+              );
+            }}
             onClientUploadComplete={(res: { res: string }) => {
-              console.log("Upload Completed", res);
+              toast.dismiss("upload-begin");
+              toast(<span>Uploaded Complete!</span>, {
+                id: "upload-complete",
+              });
               router.refresh();
             }}
             onUploadError={(error: Error) => {

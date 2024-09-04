@@ -1,8 +1,6 @@
 import "server-only";
 import { db } from "./db";
 import { auth } from "@clerk/nextjs/server";
-import { error } from "console";
-import { use } from "react";
 
 export async function getImages() {
   try {

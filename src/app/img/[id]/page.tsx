@@ -1,4 +1,4 @@
-import ImageForFullModel from "~/components/ImageForFullModel";
+import ImageForFullModel from "@/components/ImageForFullModel";
 
 export default async function PhotoModal({
   params: { id },
