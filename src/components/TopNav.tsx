@@ -58,7 +58,7 @@ export default function Nav() {
             }}
             onUploadError={(error: Error) => {
               // Do something with the error.
-              alert(`ERROR! ${error.message}`);
+              toast.error(`Something went wrong! ${error.message}`);
             }}
           />
           <UserButton />

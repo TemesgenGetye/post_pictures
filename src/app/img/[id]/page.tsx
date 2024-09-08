@@ -5,6 +5,5 @@ export default async function PhotoModal({
 }: {
   params: { id: number };
 }) {
-  console.log("id :", id);
   return <ImageForFullModel id={id} />;
 }
