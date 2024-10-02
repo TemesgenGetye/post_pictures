@@ -24,7 +24,6 @@ export async function getImages() {
     return imageURL;
   } catch (error) {
     console.error("Failed to fetch images:", error);
-    throw new Error("Failed to fetch images");
   }
 }
 

@@ -16,7 +16,7 @@ type ImageType = {
 };
 
 export default async function HomePage() {
-  const imageURL: ImageType[] = await getImages();
+  const images: ImageType[] = (await getImages()) ?? [];
 
   return (
     <main className="flex min-h-screen items-center justify-center p-6">
@@ -25,7 +25,7 @@ export default async function HomePage() {
       </SignedOut>
       <SignedIn>
         <div className="grid grid-cols-6 gap-4 py-1">
-          {imageURL.map((image) => (
+          {images.map((image) => (
             <Link href={`/img/${image.id}`} key={image.id} passHref>
               <div className="m-auto flex flex-col items-center justify-center gap-1">
                 <Image
